@@ -1,0 +1,14 @@
+# Provider de dashboards — carrega os JSONs de /var/lib/grafana/dashboards
+apiVersion: 1
+
+providers:
+  - name: observability-lab
+    orgId: 1
+    folder: "Observability Lab"
+    type: file
+    disableDeletion: false
+    editable: true
+    updateIntervalSeconds: 10
+    options:
+      path: /var/lib/grafana/dashboards
+      foldersFromFilesStructure: false

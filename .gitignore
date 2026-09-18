@@ -1,0 +1,42 @@
+# ------------------------------- Terraform -------------------------------- #
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+# (mantemos o .terraform.lock.hcl versionado — bom para reprodutibilidade)
+
+# --------------------------------- Go ------------------------------------- #
+/services/worker/worker
+*.exe
+*.test
+*.out
+
+# ------------------------------- Python ----------------------------------- #
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# -------------------------------- Node ------------------------------------ #
+node_modules/
+
+# -------------------------------- Dados ----------------------------------- #
+# Volumes/dados locais eventualmente montados como bind mounts
+/data/
+*.log
+
+# -------------------------------- Editor ---------------------------------- #
+.vscode/
+.idea/
+.DS_Store
+*.swp

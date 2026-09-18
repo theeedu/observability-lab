@@ -1,0 +1,44 @@
+# Regras de alerta — baseadas no método RED e em SLOs de disponibilidade/latência
+groups:
+  - name: api-slo
+    rules:
+      # Taxa de erro 5xx acima de 5% por 2 minutos
+      - alert: HighErrorRate
+        expr: |
+          (
+            sum(rate(http_requests_total{service="api",status=~"5.."}[5m]))
+            /
+            sum(rate(http_requests_total{service="api"}[5m]))
+          ) > 0.05
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Taxa de erro alta na API (> 5%)"
+          description: "A API está retornando mais de 5% de respostas 5xx nos últimos 5 minutos."
+
+      # Latência p95 acima de 500ms por 5 minutos
+      - alert: HighLatencyP95
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum(rate(http_request_duration_seconds_bucket{service="api"}[5m])) by (le)
+          ) > 0.5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Latência p95 alta na API (> 500ms)"
+          description: "O p95 de latência da API ultrapassou 500ms nos últimos 5 minutos."
+
+  - name: targets-health
+    rules:
+      # Qualquer target de scrape fora do ar por 1 minuto
+      - alert: TargetDown
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Target {{ $labels.job }} está fora do ar"
+          description: "O alvo de coleta {{ $labels.instance }} (job {{ $labels.job }}) está inacessível há mais de 1 minuto."

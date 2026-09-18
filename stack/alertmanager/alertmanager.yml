@@ -1,0 +1,22 @@
+# Configuração do Alertmanager.
+# Usa um receiver "nulo" por padrão (o lab não envia notificações externas para
+# manter zero dependências). Em produção, plugue Slack/e-mail/PagerDuty aqui.
+route:
+  receiver: default
+  group_by: ["alertname", "service"]
+  group_wait: 10s
+  group_interval: 30s
+  repeat_interval: 1h
+
+receivers:
+  - name: default
+    # Sem integrações externas — os alertas ficam visíveis na UI do Alertmanager
+    # (http://localhost:9093). Exemplo de webhook comentado para referência:
+    # webhook_configs:
+    #   - url: "http://seu-endpoint/webhook"
+
+inhibit_rules:
+  # Um alerta crítico inibe warnings do mesmo serviço para reduzir ruído
+  - source_matchers: [severity="critical"]
+    target_matchers: [severity="warning"]
+    equal: ["service"]
