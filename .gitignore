@@ -40,3 +40,6 @@ node_modules/
 .idea/
 .DS_Store
 *.swp
+
+# Metadados do Windows (marca de arquivo baixado)
+*:Zone.Identifier

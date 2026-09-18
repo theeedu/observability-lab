@@ -18,6 +18,33 @@
 
 ---
 
+## 📸 Preview
+
+<p align="center">
+  <img src="docs/images/dashboard.png" alt="Dashboard RED Metrics no Grafana" width="90%" />
+  <br>
+  <sub><b>Dashboard "RED Metrics" no Grafana</b> — taxa de requisições, erros, latência (p50/p95/p99) e logs em tempo real.</sub>
+</p>
+
+<table>
+  <tr>
+    <td width="33%" align="center" valign="top">
+      <img src="docs/images/prometheus.jpg" alt="Prometheus" /><br>
+      <sub><b>Prometheus</b> — targets e métricas</sub>
+    </td>
+    <td width="33%" align="center" valign="top">
+      <img src="docs/images/alerta.jpg" alt="Alertas" /><br>
+      <sub><b>Alertas</b> — regras baseadas em SLO</sub>
+    </td>
+    <td width="33%" align="center" valign="top">
+      <img src="docs/images/api.jpg" alt="API" /><br>
+      <sub><b>API</b> — endpoints instrumentados</sub>
+    </td>
+  </tr>
+</table>
+
+---
+
 ## 📖 Sobre
 
 Um laboratório de observabilidade e DevOps pensado para ser **executado de ponta a ponta na sua máquina**, sem conta em nuvem, sem API key, sem custo. Sobe uma aplicação instrumentada + um worker que gera carga + toda a stack de observabilidade (Prometheus, Grafana, Loki, Promtail, Alertmanager) com um `make up`.
