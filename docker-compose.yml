@@ -46,7 +46,9 @@ services:
       - ./stack/prometheus/rules.yml:/etc/prometheus/rules.yml:ro
       - prometheus-data:/prometheus
     ports:
-      - "9090:9090"
+      # 9090 no host costuma colidir com o Cockpit (systemd). Mapeamos 9091->9090.
+      # Ajuste via variável PROM_PORT se precisar de outra porta.
+      - "${PROM_PORT:-9091}:9090"
     networks:
       - obs
     restart: unless-stopped

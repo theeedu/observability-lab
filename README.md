@@ -86,7 +86,7 @@ make clean     # para e remove volumes
 | **Grafana** (dashboards) | http://localhost:3000 | `admin` / `admin` |
 | **API** (docs Swagger) | http://localhost:8000/docs | — |
 | **API** (métricas) | http://localhost:8000/metrics | — |
-| **Prometheus** | http://localhost:9090 | — |
+| **Prometheus** | http://localhost:9091 | — |
 | **Alertmanager** | http://localhost:9093 | — |
 | **Loki** | http://localhost:3100 | — |
 

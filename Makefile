@@ -18,7 +18,7 @@ up: ## Sobe toda a stack em background (build + start)
 	@echo "Stack no ar:"
 	@echo "  API          -> http://localhost:8000  (/docs, /metrics)"
 	@echo "  Grafana      -> http://localhost:3000  (admin / admin)"
-	@echo "  Prometheus   -> http://localhost:9090"
+	@echo "  Prometheus   -> http://localhost:9091"
 	@echo "  Alertmanager -> http://localhost:9093"
 	@echo "  Loki         -> http://localhost:3100"
 

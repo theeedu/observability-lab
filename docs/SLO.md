@@ -56,4 +56,4 @@ sum(rate(http_requests_total{service="api"}[5m]))
 
 1. Suba a stack (`make up`) e gere carga (`make load`).
 2. No Grafana, abra o dashboard **RED Metrics** para ver os SLIs em tempo real.
-3. O endpoint `/error` da API falha ~30% das vezes de propósito — o suficiente para o `HighErrorRate` disparar. Verifique em http://localhost:9093 (Alertmanager) e http://localhost:9090/alerts (Prometheus).
+3. O endpoint `/error` da API falha ~30% das vezes de propósito — o suficiente para o `HighErrorRate` disparar. Verifique em http://localhost:9093 (Alertmanager) e http://localhost:9091/alerts (Prometheus).

@@ -39,7 +39,7 @@ O lab é composto por duas camadas: a **aplicação** (que é observada) e a **p
 |-------|---------|
 | 8000 | API |
 | 9100 | Worker (métricas) |
-| 9090 | Prometheus |
+| 9091 → 9090 | Prometheus (host → container) |
 | 9093 | Alertmanager |
 | 3100 | Loki |
 | 3000 | Grafana |

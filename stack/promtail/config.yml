@@ -11,29 +11,22 @@ clients:
   - url: http://loki:3100/loki/api/v1/push
 
 scrape_configs:
-  # Descobre containers Docker automaticamente e coleta seus logs
   - job_name: docker
     docker_sd_configs:
       - host: unix:///var/run/docker.sock
         refresh_interval: 5s
+        # Coleta apenas containers marcados com a label logging=promtail
+        filters:
+          - name: label
+            values: ["logging=promtail"]
     relabel_configs:
-      # Nome do container como label
+      # Label estático garantido — todo stream tem, no mínimo, este label
+      - target_label: job
+        replacement: docker
+      # Nome do container (remove a "/" inicial)
       - source_labels: ["__meta_docker_container_name"]
-        regex: "/(.*)"
+        regex: "/?(.*)"
         target_label: container
-      # Projeto compose como label
+      # Projeto do Compose
       - source_labels: ["__meta_docker_container_label_com_docker_compose_project"]
         target_label: project
-      # Só coleta containers marcados com label logging=promtail
-      - source_labels: ["__meta_docker_container_label_logging"]
-        regex: "promtail"
-        action: keep
-    pipeline_stages:
-      # Tenta parsear logs em JSON (a API emite JSON estruturado)
-      - json:
-          expressions:
-            level: level
-            endpoint: endpoint
-            status: status
-      - labels:
-          level:

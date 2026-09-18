@@ -36,7 +36,7 @@ Todos os serviços devem reportar `[OK]`. Se algum estiver `[FAIL]`, a stack pod
 ```bash
 make ps                         # o container do serviço está de pé?
 docker compose logs <serviço>   # há erro no startup?
-curl http://localhost:9090/targets   # estado dos targets no Prometheus
+curl http://localhost:9091/targets   # estado dos targets no Prometheus
 ```
 
 **Resolução:**
@@ -76,7 +76,7 @@ No dashboard **RED Metrics**, observe o painel *Errors* e correlacione com o hor
 
 **Grafana não mostra dados**
 - Confirme os datasources em http://localhost:3000/connections/datasources (Prometheus e Loki devem estar "OK").
-- Confirme que o Prometheus está coletando: http://localhost:9090/targets.
+- Confirme que o Prometheus está coletando: http://localhost:9091/targets.
 
 **Loki sem logs**
 - O Promtail precisa de acesso ao socket do Docker (`/var/run/docker.sock`) — já mapeado no compose.

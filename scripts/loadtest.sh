@@ -31,4 +31,4 @@ seq "$TOTAL" | xargs -P "$CONCURRENCY" -I {} bash -c 'hit >/dev/null'
 
 echo "==> Concluído. Veja os resultados em:"
 echo "    Grafana    -> http://localhost:3000 (dashboard 'RED Metrics')"
-echo "    Prometheus -> http://localhost:9090/graph"
+echo "    Prometheus -> http://localhost:9091/graph"
